@@ -1,0 +1,52 @@
+<header class="sticky top-0 left-0 w-full bg-white z-50">
+  <p-progressbar
+    [value]="formProgress"
+    showValue="false"
+    [style]="{ height: '6px', borderRadius: '0px' }"
+  />
+  <div class="flex flex-col items-center my-5 bg-white">
+    <h1 class="text-left text-2xl font-normal">
+      {{ currentStep }}. {{ currentForm.title }}
+    </h1>
+    <span
+      *ngIf="currentForm.description"
+      class="text-left text-sm font-normal mt-5 w-[600px]"
+    >
+      {{ currentForm.description }}
+    </span>
+  </div>
+</header>
+<div class="flex flex-row justify-center p-10">
+  <form
+    class="grid grid-cols-6 items-end gap-4 xl:w-1/2 md:max-w-[600px] w-full"
+    [formGroup]="formGroup"
+  >
+    @for (field of currentForm.fields; track field.key) {
+      <form-field
+        [ngClass]="getFormFieldClass(field)"
+        [field]="field"
+        [formGroup]="formGroup"
+      ></form-field>
+    }
+  </form>
+</div>
+
+<footer class="flex flex-row items-center justify-center p-10">
+  <div class="flex flex-row md:w-1/2 md:max-w-[500px] w-full justify-between">
+    <p-button
+      severity="contrast"
+      [rounded]="true"
+      icon="pi pi-arrow-left"
+      (onClick)="onPrevious()"
+    ></p-button>
+    <p-button
+      severity="contrast"
+      [rounded]="true"
+      icon="pi pi-arrow-right"
+      (onClick)="onNext()"
+      [disabled]="formGroup.invalid"
+    ></p-button>
+  </div>
+</footer>
+
+<form-fab></form-fab>

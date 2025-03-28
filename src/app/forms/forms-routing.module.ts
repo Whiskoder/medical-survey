@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FormHomePageComponent } from './pages/form-home-page/form-home-page.component';
+
+import { CreateFormComponent } from './pages/create-form/create-form.component';
+import { HistoryFormComponent } from './pages/history-form/history-form.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: FormHomePageComponent,
+    path: 'create',
+    component: CreateFormComponent,
+  },
+  {
+    path: 'history',
+    component: HistoryFormComponent,
   },
   {
     path: '**',
