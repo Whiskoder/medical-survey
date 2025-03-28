@@ -1,0 +1,45 @@
+<header class="sticky top-0 left-0 w-full bg-white">
+  <p-progressbar
+    [value]="(step * 100) / 7"
+    showValue="false"
+    [style]="{ height: '6px', borderRadius: '0px' }"
+  />
+  <div class="flex flex-col items-center my-5">
+    <h1 class="text-left text-2xl font-normal">{{ step }}. {{ title }}</h1>
+  </div>
+</header>
+<div class="flex flex-row items-center justify-center p-10">
+  <div class="flex flex-col gap-4 md:w-1/2 md:max-w-[500px] w-full">
+    @for(field of formData; track field.key){
+    <form-field [key]="field.key" [label]="field.label"></form-field>
+    }
+  </div>
+</div>
+
+<footer class="flex flex-row items-center justify-center p-10">
+  <div class="flex flex-row md:w-1/2 md:max-w-[500px] w-full justify-between">
+    <p-button
+      [outlined]="true"
+      severity="primary"
+      [rounded]="true"
+      icon="pi pi-arrow-left"
+    ></p-button>
+    <p-button
+      [outlined]="true"
+      severity="primary"
+      [rounded]="true"
+      icon="pi pi-arrow-right"
+    ></p-button>
+  </div>
+</footer>
+
+<div class="sticky bottom-0 left-0 w-full">
+  <div class="flex flex-row justify-end p-10">
+    <p-button
+      icon="pi pi-arrow-down"
+      [outlined]="true"
+      severity="primary"
+      [rounded]="true"
+    ></p-button>
+  </div>
+</div>
